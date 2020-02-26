@@ -14,6 +14,7 @@ class UserController extends Controller
     public function getActiveUsers (Request $request) {
 
         $users = User::join('access_levels', 'users.access_level_id', '=', 'access_levels.id')->where('status_id', 1)->select('users.id', 'users.name', 'users.email', 'access_levels.access_level', 'users.created_at', 'users.updated_at')->orderBy('id')->get();
+
         return view('User.activeUsers', ["users"=>$users]);
 
     }   
@@ -22,6 +23,7 @@ class UserController extends Controller
     public function getInactiveUsers (Request $request) {
 
         $users = User::join('access_levels', 'users.access_level_id', '=', 'access_levels.id')->where('status_id', 2)->select('users.id', 'users.name', 'users.email', 'access_levels.access_level', 'users.created_at', 'users.updated_at')->orderBy('id')->get();
+
         return view('User.inactiveUsers', ["users"=>$users]);
 
     } 
@@ -61,6 +63,79 @@ class UserController extends Controller
             return redirect('/usuarios/ativos'); 
         }
     } 
+
+    //visualizando usuários admin ativos
+    public function getAdminActive(Request $request){
+
+        $users = User::where([
+            ['status_id', 1],
+            ['access_level_id', 1]
+            ])->get();
+
+        return view('User.adminActive', ["users"=>$users]);
+
+    }
+
+    //visualizando usuários gerentes ativos
+    public function getManagerActive(Request $request){
+
+        $users = User::where([
+            ['status_id', 1],
+            ['access_level_id', 2]
+            ])->get();
+
+        return view('User.managerActive', ["users"=>$users]);
+
+    }
+
+    //visualizando usuários consultores ativos
+    public function getConsultantActive(Request $request){
+
+        $users = User::where([
+            ['status_id', 1],
+            ['access_level_id', 3]
+            ])->get();
+
+        return view('User.consultantActive', ["users"=>$users]);
+
+    }
+
+    //visualizando usuários admin inativos
+    public function getAdminInactive(Request $request){
+
+        $users = User::where([
+            ['status_id', 2],
+            ['access_level_id', 1]
+            ])->get();
+
+        return view('User.adminInactive', ["users"=>$users]);
+
+    }
+
+    //visualizando usuários gerentes inativos
+    public function getManagerInactive(Request $request){
+
+        $users = User::where([
+            ['status_id', 2],
+            ['access_level_id', 2]
+            ])->get();
+
+        return view('User.managerInactive', ["users"=>$users]);
+
+    }
+
+    //visualizando usuários consultores inativos
+    public function getConsultantInactive(Request $request){
+
+        $users = User::where([
+            ['status_id', 2],
+            ['access_level_id', 3]
+            ])->get();
+
+        return view('User.consultantInactive', ["users"=>$users]);
+
+    }
+
 
 
 

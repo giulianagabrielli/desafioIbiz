@@ -38,7 +38,7 @@
                         </td>
                     </tr>
                 @empty
-                    <h1>Não há Administradores cadastrados</h1>
+                    <h1>Não há usuários ativos cadastrados</h1>
                 @endforelse   
                 </tbody>
             </table>

@@ -24,12 +24,21 @@ Route::get('export', 'MyController@export')->name('export');
 Route::get('importExportView', 'MyController@importExportView');
 Route::post('import', 'MyController@import')->name('import');
 
-//lista de usuários ativos e inativos
-Route::get('/usuarios/ativos', 'UserController@getActiveUsers')->middleware('checkadmin');
-Route::get('/usuarios/inativos', 'UserController@getInactiveUsers')->middleware('checkadmin');
-//atualizar informações de usuários
-Route::get('/usuarios/atualizar/{id?}', 'UserController@updateUser')->middleware('checkadmin');
-Route::post('/usuarios/atualizar', 'UserController@updateUser');
-//detelar usuário
-Route::get('/usuarios/deletar/{id?}', 'UserController@deleteUser')->middleware('checkadmin');
-
+Route::group(['prefix'=>'usuarios'], function(){
+    //lista de usuários ativos e inativos
+    Route::get('/ativos', 'UserController@getActiveUsers')->middleware('checkadmin');
+    Route::get('/inativos', 'UserController@getInactiveUsers')->middleware('checkadmin');
+    //atualizar informações de usuários
+    Route::get('/atualizar/{id?}', 'UserController@updateUser')->middleware('checkadmin');
+    Route::post('/atualizar', 'UserController@updateUser');
+    //detelar usuário
+    Route::get('/deletar/{id?}', 'UserController@deleteUser')->middleware('checkadmin');
+    //visualização de níveis de acesso ativos
+    Route::get('/admin/ativos', 'UserController@getAdminActive')->middleware('checkadmin');
+    Route::get('/gerente/ativos', 'UserController@getManagerActive')->middleware('checkadmin');
+    Route::get('/consultor/ativos', 'UserController@getConsultantActive')->middleware('checkadmin');
+    //visualização de níveis de acesso inativos
+    Route::get('/admin/inativos', 'UserController@getAdminInactive')->middleware('checkadmin');
+    Route::get('/gerente/inativos', 'UserController@getManagerInactive')->middleware('checkadmin');
+    Route::get('/consultor/inativos', 'UserController@getConsultantInactive')->middleware('checkadmin');
+});

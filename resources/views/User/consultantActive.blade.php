@@ -5,10 +5,11 @@
 <section class="container">
     <div class="row">
         <div class="col-md-12 mb-4">
-            <h3>Lista de usuários:</h3>
+            <h3>Lista de usuários ativos:</h3>
             
-            <a href="/usuarios/ativos" class="btn btn-outline-secondary">Ativos</a>
-            <a href="/usuarios/inativos" class="btn btn-success">Inativos</a>
+            <a href="/usuarios/admin/ativos" class="btn btn-outline-secondary">Administrador</a>
+            <a href="/usuarios/gerente/ativos" class="btn btn-outline-secondary">Gerente</a>
+            <a href="/usuarios/consultor/ativos" class="btn btn-success">Consultor</a>
         </div>
 
         <div class="col-md-12">
@@ -18,7 +19,6 @@
                         <th scope="col">id</th>
                         <th scope="col">Nome do usuário</th>
                         <th scope="col">E-mail</th>
-                        <th scope="col">Nível de Acesso</th>
                         <th scope="col">Criado em</th>
                         <th scope="col">Atualizado em</th>
                     </tr>
@@ -29,7 +29,6 @@
                         <th scope="row"> {{$user->id}} </th>
                         <td> {{$user->name}} </td>
                         <td> {{ $user->email }} </td>
-                        <td> {{ $user->access_level }} </td>
                         <td> {{ $user->created_at }} </td>
                         <td> {{ $user->updated_at }} </td>
                         <td>
@@ -38,7 +37,7 @@
                         </td>
                     </tr>
                 @empty
-                    <h1>Não há usuários inativos cadastrados</h1>
+                    <h1>Não há Consultores Ativos cadastrados</h1>
                 @endforelse   
                 </tbody>
             </table>

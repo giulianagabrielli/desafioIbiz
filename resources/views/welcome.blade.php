@@ -84,8 +84,10 @@
                     Ibiz
                 </div>
 
-                <div class="links"> <!-- VER ESSAS ROTAS -->
-                    <a href="/usuarios/ativos">Users</a>
+                <div class="links"> 
+                    <a href="/usuarios/ativos">Lista de Usuários</a>
+                    <a href="/usuarios/admin/ativos">Usuários Ativos</a>
+                    <a href="/usuarios/admin/inativos">Usuários Inativos</a>
                     <a href="{{ route('home') }}">Products</a>
                 </div>
             </div>
