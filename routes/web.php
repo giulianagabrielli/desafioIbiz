@@ -25,11 +25,11 @@ Route::get('importExportView', 'MyController@importExportView');
 Route::post('import', 'MyController@import')->name('import');
 
 //lista de usuários ativos e inativos
-Route::get('/usuarios/ativos', 'UserController@getActiveUsers');
-Route::get('/usuarios/inativos', 'UserController@getInactiveUsers');
+Route::get('/usuarios/ativos', 'UserController@getActiveUsers')->middleware('checkadmin');
+Route::get('/usuarios/inativos', 'UserController@getInactiveUsers')->middleware('checkadmin');
 //atualizar informações de usuários
-Route::get('/usuarios/atualizar/{id?}', 'UserController@updateUser');
+Route::get('/usuarios/atualizar/{id?}', 'UserController@updateUser')->middleware('checkadmin');
 Route::post('/usuarios/atualizar', 'UserController@updateUser');
 //detelar usuário
-Route::get('/usuarios/deletar/{id?}', 'UserController@deleteUser');
+Route::get('/usuarios/deletar/{id?}', 'UserController@deleteUser')->middleware('checkadmin');
 

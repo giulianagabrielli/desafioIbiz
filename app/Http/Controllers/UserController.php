@@ -13,7 +13,7 @@ class UserController extends Controller
     //visualização de usuários ativos (status_id = 1)
     public function getActiveUsers (Request $request) {
 
-        $users = User::where('status_id', 1)->get();
+        $users = User::join('access_levels', 'users.access_level_id', '=', 'access_levels.id')->where('status_id', 1)->select('users.id', 'users.name', 'users.email', 'access_levels.access_level', 'users.created_at', 'users.updated_at')->orderBy('id')->get();
         return view('User.activeUsers', ["users"=>$users]);
 
     }   
@@ -21,7 +21,7 @@ class UserController extends Controller
     //visualização de usuários inativos (status_id = 2)
     public function getInactiveUsers (Request $request) {
 
-        $users = User::where('status_id', 2)->get();
+        $users = User::join('access_levels', 'users.access_level_id', '=', 'access_levels.id')->where('status_id', 2)->select('users.id', 'users.name', 'users.email', 'access_levels.access_level', 'users.created_at', 'users.updated_at')->orderBy('id')->get();
         return view('User.inactiveUsers', ["users"=>$users]);
 
     } 
@@ -63,5 +63,5 @@ class UserController extends Controller
     } 
 
 
-    
+
 }
