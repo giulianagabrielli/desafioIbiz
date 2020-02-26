@@ -61,6 +61,34 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="access_level" class="col-md-4 col-form-label text-md-right">{{ __('Access Level Id') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="access_level_id" type="number" class="form-control @error('access_level_id') is-invalid @enderror" name="access_level_id" value="{{ old('access_level_id') }}" required autocomplete="access_level_id" autofocus>
+
+                                @error('access_level_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="access_level" class="col-md-4 col-form-label text-md-right">{{ __('Status Id') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="status_id" type="number" class="form-control @error('status_id') is-invalid @enderror" name="status_id" value="{{ old('status_id') }}" required autocomplete="status_id" autofocus>
+
+                                @error('status_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

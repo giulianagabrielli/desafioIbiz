@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'access_level_id', 'status_id'
     ];
 
     /**
@@ -36,4 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Fazendo a associação das tabelas para cruzar dados de users e access_levels.
+    public function access_levels(){
+        return $this->belongsTo('App\Access_level');
+    }
+
+    // Fazendo a associação das tabelas para cruzar dados de users e status.
+    public function status(){
+        return $this->belongsTo('App\Status');
+    }
 }
