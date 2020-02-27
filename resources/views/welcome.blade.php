@@ -85,10 +85,11 @@
                 </div>
 
                 <div class="links"> 
-                    <a href="/usuarios/ativos">Lista de Usuários</a>
-                    <a href="/usuarios/admin/ativos">Usuários Ativos</a>
-                    <a href="/usuarios/admin/inativos">Usuários Inativos</a>
-                    <a href="/produtos/ativos">Produtos</a>
+                    <a href="/usuarios/ativos">Usuários Ativos/Inativos</a>
+                    <a href="/usuarios/admin/ativos">Usuários Ativos por Nível</a>
+                    <a href="/usuarios/admin/inativos">Usuários Inativos por Nível</a>
+                    <a href="/produtos/ativos">Lista de Produtos</a>
+                    <a href="/produtos/cadastrar">Cadastrar Produtos</a>
                 </div>
             </div>
         </div>

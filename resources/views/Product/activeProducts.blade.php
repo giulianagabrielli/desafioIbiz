@@ -38,8 +38,8 @@
                         <td> {{ $product->created_at }} </td>
                         <td> {{ $product->updated_at }} </td>
                         <td>
-                            <a class="btn btn-primary" href="/produtos/atualizar/{{$product->cod_interno}}">Atualizar</a>
-                            <a class="btn btn-danger" href="/produtos/deletar/{{$product->cod_interno}}">Deletar</a>
+                            <a class="btn btn-primary" href="/produtos/atualizar/{{$product->id}}">Atualizar</a>
+                            <a class="btn btn-danger" href="/produtos/deletar/{{$product->id}}">Deletar</a>
                         </td>
                     </tr>
                 @empty

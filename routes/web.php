@@ -19,9 +19,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//usuário logado que não tem nível de acesso para a rota
+Route::get('/stop', 'HomeController@stop')->name('stop');
+
 //importar e exportar dados Excel
 Route::get('export', 'SpreadsheetController@export')->name('export');
-Route::get('importExportView', 'SpreadsheetController@importExportView');
+Route::get('planilha', 'SpreadsheetController@importExportView');
 Route::post('import', 'SpreadsheetController@import')->name('import');
 
 //rotas de usuários (/login e /register são do pacote ui)
@@ -46,7 +49,15 @@ Route::group(['prefix'=>'usuarios'], function(){
 
 //rotas para produtos
 Route::group(['prefix'=>'produtos'], function(){
-    Route::get('/ativos', 'ProductController@getActiveProducts');
-    Route::get('/inativos', 'ProductController@getInactiveProducts');
-
+    //lista de produtos ativos e inativos
+    Route::get('/ativos', 'ProductController@getActiveProducts')->middleware('checkuser');
+    Route::get('/inativos', 'ProductController@getInactiveProducts')->middleware('checkadminmanager');
+    //edição de produtos
+    Route::get('/atualizar/{id?}', 'ProductController@updateProduct')->middleware('checkadmin');
+    Route::post('/atualizar', 'ProductController@updateProduct')->middleware('checkadmin');
+    //detelar produto
+    Route::get('/deletar/{id?}', 'ProductController@deleteProduct')->middleware('checkadmin');
+    //cadastrar produto
+    Route::get('/cadastrar', 'ProductController@createProduct')->middleware('checkadminmanager');
+    Route::post('/cadastrar', 'ProductController@createProduct');
 });

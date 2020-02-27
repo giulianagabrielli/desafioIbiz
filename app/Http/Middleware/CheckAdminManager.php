@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Auth;
 
-class CheckAdmin
+class CheckAdminManager
 {
     /**
      * Handle an incoming request.
@@ -18,10 +18,10 @@ class CheckAdmin
     {
         $user = Auth::user();
 
-        if($user && $user->access_level_id == 1){
+        if($user && $user->access_level_id == 1 || $user->access_level_id == 2){
             return $next($request);
         } else {
-            return redirect('/stop');
+            return redirect('/login');
         }
     }
 }

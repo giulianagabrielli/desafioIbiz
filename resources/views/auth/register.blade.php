@@ -62,10 +62,15 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="access_level" class="col-md-4 col-form-label text-md-right">{{ __('Access Level Id') }}</label>
+                            <label for="access_level_id" class="col-md-4 col-form-label text-md-right">{{ __('Access Level Id') }}</label>
 
                             <div class="col-md-6">
-                                <input id="access_level_id" type="number" class="form-control @error('access_level_id') is-invalid @enderror" name="access_level_id" value="{{ old('access_level_id') }}" required autocomplete="access_level_id" autofocus>
+                                <select class="form-control @error('access_level_id') is-invalid @enderror" name="access_level_id" id="access_level_id">
+                                    <option value="{{ old('access_level_id') }}" selected></option>
+                                    <option value=1>1 - Administrador</option>
+                                    <option value=2>2 - Gerente</option>
+                                    <option value=3>3 - Consultor</option>
+                                </select>
 
                                 @error('access_level_id')
                                     <span class="invalid-feedback" role="alert">
@@ -79,7 +84,11 @@
                             <label for="access_level" class="col-md-4 col-form-label text-md-right">{{ __('Status Id') }}</label>
 
                             <div class="col-md-6">
-                                <input id="status_id" type="number" class="form-control @error('status_id') is-invalid @enderror" name="status_id" value="{{ old('status_id') }}" required autocomplete="status_id" autofocus>
+                                <select class="form-control @error('status_id') is-invalid @enderror" name="status_id" id="status_id">
+                                    <option value="{{ old('status_id') }}" selected></option>
+                                    <option value=1>1 - Ativo</option>
+                                    <option value=2>2 - Inativo</option>
+                                </select>
 
                                 @error('status_id')
                                     <span class="invalid-feedback" role="alert">
