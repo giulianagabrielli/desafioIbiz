@@ -9,8 +9,6 @@ class Access_level extends Model
     protected $table = 'access_levels';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'access_level',
-        'created_at',
-        'updated_at'        
+        'access_level',        
     ];
 }

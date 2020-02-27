@@ -7,7 +7,7 @@ use App\Exports\ProductsExport;
 use App\Imports\ProductsImport;
 use Maatwebsite\Excel\Facades\Excel;
   
-class MyController extends Controller
+class SpreadsheetController extends Controller
 {
     /**
     * @return \Illuminate\Support\Collection

@@ -20,13 +20,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //importar e exportar dados Excel
-Route::get('export', 'MyController@export')->name('export');
-Route::get('importExportView', 'MyController@importExportView');
-Route::post('import', 'MyController@import')->name('import');
+Route::get('export', 'SpreadsheetController@export')->name('export');
+Route::get('importExportView', 'SpreadsheetController@importExportView');
+Route::post('import', 'SpreadsheetController@import')->name('import');
 
+//rotas de usuários (/login e /register são do pacote ui)
 Route::group(['prefix'=>'usuarios'], function(){
     //lista de usuários ativos e inativos
-    Route::get('/ativos', 'UserController@getActiveUsers')->middleware('checkadmin');
+    Route::get('/ativos', 'UserController@getActiveUsers')->middleware('checkuser');
     Route::get('/inativos', 'UserController@getInactiveUsers')->middleware('checkadmin');
     //atualizar informações de usuários
     Route::get('/atualizar/{id?}', 'UserController@updateUser')->middleware('checkadmin');
@@ -41,4 +42,11 @@ Route::group(['prefix'=>'usuarios'], function(){
     Route::get('/admin/inativos', 'UserController@getAdminInactive')->middleware('checkadmin');
     Route::get('/gerente/inativos', 'UserController@getManagerInactive')->middleware('checkadmin');
     Route::get('/consultor/inativos', 'UserController@getConsultantInactive')->middleware('checkadmin');
+});
+
+//rotas para produtos
+Route::group(['prefix'=>'produtos'], function(){
+    Route::get('/ativos', 'ProductController@getActiveProducts');
+    Route::get('/inativos', 'ProductController@getInactiveProducts');
+
 });

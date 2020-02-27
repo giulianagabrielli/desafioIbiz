@@ -88,7 +88,7 @@
                     <a href="/usuarios/ativos">Lista de Usuários</a>
                     <a href="/usuarios/admin/ativos">Usuários Ativos</a>
                     <a href="/usuarios/admin/inativos">Usuários Inativos</a>
-                    <a href="{{ route('home') }}">Products</a>
+                    <a href="/produtos/ativos">Produtos</a>
                 </div>
             </div>
         </div>
