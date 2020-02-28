@@ -26,6 +26,9 @@ Route::post('import', 'SpreadsheetController@import')->name('import');
 
 //rotas de usuários (/login e /register são do pacote ui)
 Route::group(['prefix'=>'usuarios'], function(){
+    //cadastro de usuário pelo admin
+    Route::get('/cadastrar', 'UserController@registerUser')->middleware('checkadmin');
+    Route::post('/cadastrar', 'UserController@registerUser');
     //lista de usuários ativos e inativos
     Route::get('/ativos', 'UserController@getActiveUsers')->middleware('checkuser');
     Route::get('/inativos', 'UserController@getInactiveUsers')->middleware('checkadmin');

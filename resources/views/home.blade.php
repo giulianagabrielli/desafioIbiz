@@ -16,6 +16,10 @@
 
                     You are logged in!
                 </div>
+
+                <div>
+                    <a class="btn btn-primary m-3" href="/">Menu</a>
+                </div>
             </div>
         </div>
     </div>

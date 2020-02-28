@@ -4,12 +4,21 @@
 <div class="margem">
 <section class="container">
     <div class="row">
+
+        <div class="col-md-12 mb-4">
+            <a href="/usuarios/cadastrar" class="btn btn-success btn-lg">Cadastrar Usuários</a>
+            <small id="" class="form-text text-muted">Acesso restrito a administradores</small>
+        </div>
+
         <div class="col-md-12 mb-4">
             <h3>Lista de usuários ativos:</h3>
             
             <a href="/usuarios/admin/ativos" class="btn btn-outline-secondary">Administrador</a>
             <a href="/usuarios/gerente/ativos" class="btn btn-outline-secondary">Gerente</a>
             <a href="/usuarios/consultor/ativos" class="btn btn-primary">Consultor</a>
+            <a href="/usuarios/ativos" class="btn btn-outline-secondary">Todos</a>
+            <a href="/usuarios/admin/inativos" class="btn btn-outline-secondary">Usuários inativos por nível de acesso</a>
+
         </div>
 
         <div class="col-md-12">

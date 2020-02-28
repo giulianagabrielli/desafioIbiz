@@ -136,6 +136,30 @@ class UserController extends Controller
 
     }
 
+    //cadastro de novo usuário pelo admin
+    public function registerUser(Request $request){
+
+        if($request->isMethod('GET')){
+
+            return view('User.registerUser');
+        } else {
+
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->cpf = $request->cpf;
+            $user->access_level_id = $request->access_level_id;
+            $user->status_id = $request->status_id;
+
+            $result = $user->save();
+
+            return view('User.registerUser', ["result"=>$result]);
+
+        }
+
+    }
+
 
 
 

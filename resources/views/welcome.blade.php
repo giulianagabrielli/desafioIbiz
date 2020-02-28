@@ -68,13 +68,12 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="/home" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
                     @endauth
                 </div>
             @endif
@@ -86,8 +85,6 @@
 
                 <div class="links"> 
                     <a href="/usuarios/ativos">Usuários</a>
-                    <a href="/usuarios/admin/ativos">Usuários Ativos por Nível</a>
-                    <a href="/usuarios/admin/inativos">Usuários Inativos por Nível</a>
                     <a href="/produtos/ativos">Produtos</a>
                 </div>
             </div>
