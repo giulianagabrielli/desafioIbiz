@@ -14,8 +14,8 @@
                     <input type="text" name="id" hidden value="{{ $product->id }}"> 
 
                     <div class="form-group">
-                        <label for="produto">Produto</label>
-                        <input name="produto" type="text" class="form-control" id="produto" value="{{ $product->produto }}"> 
+                        <label for="nome">Nome</label>
+                        <input name="nome" type="text" class="form-control" id="nome" value="{{ $product->nome }}"> 
                     </div>
 
                     <div class="form-group">
@@ -29,11 +29,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="inativo">Inativo</label>
-                        <select class="form-control" name="inativo" id="inativo">
-                        <option selected>{{ $product->inativo }}</option>
-                        <option value="Sim">Sim</option>
-                        <option value="Não">Não</option>
+                        <label for="status_id">Status Id</label>
+                        <select class="form-control" name="status_id" id="status_id">
+                        <option selected>{{ $product->status_id }}</option>
+                        <option value=1>1 - Ativo</option>
+                        <option value=2>2 - Inativo</option>
                         </select>
                     </div>
 
@@ -48,8 +48,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="valor">Valor (R$)</label>
-                        <input name="valor" type="number" class="form-control" id="valor" value="{{ $product->valor }}"> 
+                        <label for="valor_embalagem">Valor por Embalagem</label>
+                        <input name="valor_embalagem" type="number" class="form-control" id="valor_embalagem" value="{{ $product->valor_embalagem }}"> 
                     </div>
 
                     <div class="col-lg p-0">
@@ -65,8 +65,8 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        @if(isset($result)) <!-- se existe -->
-                            @if($result) <!-- se é verdadeiro ou falso -->
+                        @if(isset($result)) 
+                            @if($result) 
                                 <h3>Atualização realizada com sucesso!</h3>
                                 <a class="btn btn-primary" href="/produtos/ativos">Voltar</a>
                             @else

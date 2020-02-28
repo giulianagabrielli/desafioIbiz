@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cd9da35ed1f2af0ec456408da0ca86e6",
+    "content-hash": "67ac45bede3b1b43c7cc028a17a5b217",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -279,6 +279,47 @@
                 "validator"
             ],
             "time": "2020-02-13T22:36:52+00:00"
+        },
+        {
+            "name": "eltoninacio/cpfcnpj-laravel",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eltoninacio/cpfcnpj-laravel.git",
+                "reference": "df50526479fe0e81ebbf3c6293cd89fc29bbd397"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eltoninacio/cpfcnpj-laravel/zipball/df50526479fe0e81ebbf3c6293cd89fc29bbd397",
+                "reference": "df50526479fe0e81ebbf3c6293cd89fc29bbd397",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "illuminate/support": "^5.0",
+                "illuminate/validation": "^5.0",
+                "phpunit/phpunit": "4.8.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EltonInacio\\ValidadorCpfCnpj\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Elton Inacio",
+                    "email": "elton.inacio95@gmail.com"
+                }
+            ],
+            "description": "Validação de cpf, cnpj, cpfcnpj para laravel 5.*",
+            "time": "2020-01-10T14:00:10+00:00"
         },
         {
             "name": "fideloper/proxy",

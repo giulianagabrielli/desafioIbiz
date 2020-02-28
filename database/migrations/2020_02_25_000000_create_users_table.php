@@ -17,8 +17,8 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('cpf')->unique();
             $table->unsignedBigInteger('access_level_id');
             $table->foreign('access_level_id')->references('id')->on('access_levels');
             $table->unsignedBigInteger('status_id');

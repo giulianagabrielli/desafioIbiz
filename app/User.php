@@ -16,7 +16,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'access_level_id', 'status_id'
+        'name', 
+        'email', 
+        'password', 
+        'cpf',
+        'access_level_id', 
+        'status_id'
     ];
 
     /**
@@ -26,15 +31,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password', 'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
     ];
 
     // Fazendo a associação das tabelas para cruzar dados de users e access_levels.

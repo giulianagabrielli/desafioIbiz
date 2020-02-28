@@ -10,14 +10,14 @@ class ProductController extends Controller
     //visualização de produtos ativos 
     public function getActiveProducts(){
         
-        $products = Product::where('inativo', '=', 'Não')->get();
+        $products = Product::where('status_id', '=', 1)->get();
         return view('Product.activeProducts', ["products"=>$products]);
     }
 
     //visualização de produtos inativos 
     public function getInactiveProducts(){
         
-        $products = Product::where('inativo', '=', 'Sim')->get();
+        $products = Product::where('status_id', '=', 2)->get();
         return view('Product.inactiveProducts', ["products"=>$products]);
     }
 
@@ -37,14 +37,13 @@ class ProductController extends Controller
             
             //alterando dados na tabela Products:
             $product = Product::find($request->id); 
-            $product->produto = $request->produto;
+            $product->nome = $request->nome;
             $product->cod_interno = $request->cod_interno;
             $product->descricao = $request->descricao;
-            $product->inativo = $request->inativo;
+            $product->status_id = $request->status_id;
             $product->cod_integracao = $request->cod_integracao;
             $product->qde_embalagem = $request->qde_embalagem;
-            $product->valor = $request->valor;
-            
+            $product->valor_embalagem = $request->valor_embalagem;
             
             $result = $product->save();
     
@@ -71,14 +70,13 @@ class ProductController extends Controller
 
             //criando novo produto em Products:
             $product = new Product();
-            $product->produto = $request->produto; 
+            $product->nome = $request->nome; 
             $product->cod_interno = $request->cod_interno; 
             $product->descricao = $request->descricao; 
-            $product->data_criacao = $request->data_criacao; 
-            $product->inativo = $request->inativo; 
+            $product->status_id = $request->status_id; 
             $product->cod_integracao = $request->cod_integracao; 
             $product->qde_embalagem = $request->qde_embalagem; 
-            $product->valor = $request->valor; 
+            $product->valor_embalagem = $request->valor_embalagem; 
 
             $result = $product->save();
 

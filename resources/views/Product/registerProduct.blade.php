@@ -26,8 +26,8 @@
                 @csrf      
                     
                     <div class="form-group">
-                        <label for="produto">Produto</label>
-                        <input name="produto" type="text" class="form-control" id="produto" placeholder="Digite o nome do produto" value="{{ old('produto') }}" required> 
+                        <label for="nome">Nome</label>
+                        <input name="nome" type="text" class="form-control" id="nome" placeholder="Digite o nome do nome" value="{{ old('nome') }}" required> 
                     </div>
 
                     <div class="form-group">
@@ -41,16 +41,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="data_criacao">Data de Criação</label>
-                        <input name="data_criacao" type="text" class="form-control" id="data_criacao" placeholder="Digite a Data de Criação" value="{{ old('data_criacao') }}" required> 
-                    </div>
-
-                    <div class="form-group">
-                        <label for="inativo">Inativo</label>
-                        <select class="form-control" name="inativo" id="inativo">
-                        <option value="{{ old('inativo') }}" selected></option>
-                        <option value="Sim">Sim</option>
-                        <option value="Não">Não</option>
+                        <label for="status_id">Status Id</label>
+                        <select class="form-control" name="status_id" id="status_id">
+                        <option value="{{ old('status_id') }}" selected></option>
+                        <option value=1>1 - Ativo</option>
+                        <option value=2>2 - Inativo</option>
                         </select>
                     </div>
 
@@ -65,8 +60,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="valor">Valor (R$)</label>
-                        <input name="valor" type="number" class="form-control" id="valor" placeholder="Digite o Valor" value="{{ old('valor') }}" required> 
+                        <label for="valor_embalagem">Valor por Embalagem</label>
+                        <input name="valor_embalagem" type="number" class="form-control" id="valor_embalagem" placeholder="Digite o Valor" value="{{ old('valor_embalagem') }}" required> 
                     </div>
 
                     <div class="col-lg p-0">

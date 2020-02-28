@@ -60,8 +60,8 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        @if(isset($result)) <!-- se existe -->
-                            @if($result) <!-- se é verdadeiro ou falso -->
+                        @if(isset($result)) 
+                            @if($result) 
                                 <h3>Atualização realizada com sucesso!</h3>
                                 <a class="btn btn-primary" href="/usuarios/ativos">Voltar</a>
                             @else

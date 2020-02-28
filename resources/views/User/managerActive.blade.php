@@ -8,7 +8,7 @@
             <h3>Lista de usuários ativos:</h3>
             
             <a href="/usuarios/admin/ativos" class="btn btn-outline-secondary">Administrador</a>
-            <a href="/usuarios/gerente/ativos" class="btn btn-success">Gerente</a>
+            <a href="/usuarios/gerente/ativos" class="btn btn-primary">Gerente</a>
             <a href="/usuarios/consultor/ativos" class="btn btn-outline-secondary">Consultor</a>
         </div>
 
@@ -32,7 +32,7 @@
                         <td> {{ $user->created_at }} </td>
                         <td> {{ $user->updated_at }} </td>
                         <td>
-                            <a class="btn btn-primary" href="/usuarios/atualizar/{{$user->id}}">Atualizar</a>
+                            <a class="btn btn-success" href="/usuarios/atualizar/{{$user->id}}">Atualizar</a>
                             <a class="btn btn-danger" href="/usuarios/deletar/{{$user->id}}">Deletar</a>
                         </td>
                     </tr>

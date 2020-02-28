@@ -7,7 +7,7 @@
         <div class="col-md-12 mb-4">
             <h3>Lista de usuários:</h3>
             
-            <a href="/usuarios/ativos" class="btn btn-success">Ativos</a>
+            <a href="/usuarios/ativos" class="btn btn-primary">Ativos</a>
             <a href="/usuarios/inativos" class="btn btn-outline-secondary">Inativos</a>
         </div>
 
@@ -33,7 +33,7 @@
                         <td> {{ $user->created_at }} </td>
                         <td> {{ $user->updated_at }} </td>
                         <td>
-                            <a class="btn btn-primary" href="/usuarios/atualizar/{{$user->id}}">Atualizar</a>
+                            <a class="btn btn-success" href="/usuarios/atualizar/{{$user->id}}">Atualizar</a>
                             <a class="btn btn-danger" href="/usuarios/deletar/{{$user->id}}">Deletar</a>
                         </td>
                     </tr>

@@ -7,16 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $table = 'products';
+    
     protected $fillable = [
-        'produto',
+        'nome',
         'cod_interno', 
         'descricao', 
-        'data_criacao', 
-        'inativo', 
+        'status_id', 
         'cod_integracao', 
         'qde_embalagem', 
-        'valor',
+        'valor_embalagem',
         'created_at',
         'updated_at'        
     ];
+
+    // Fazendo a associação das tabelas para cruzar dados de produtos e status.
+    public function status(){
+        return $this->belongsTo('App\Status');
+    }
 }

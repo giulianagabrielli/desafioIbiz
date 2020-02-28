@@ -15,14 +15,14 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('produto');
+            $table->string('nome');
             $table->string('cod_interno');
             $table->text('descricao');
-            $table->string('data_criacao');
-            $table->string('inativo');
+            $table->unsignedBigInteger('status_id');
+            $table->foreign('status_id')->references('id')->on('status');
             $table->string('cod_integracao');
             $table->string('qde_embalagem');
-            $table->string('valor');
+            $table->string('valor_embalagem');
             $table->timestamps();
         });
     }
