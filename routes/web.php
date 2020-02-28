@@ -19,12 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//usuário logado que não tem nível de acesso para a rota
-Route::get('/stop', 'HomeController@stop')->name('stop');
-
 //importar e exportar dados Excel
 Route::get('export', 'SpreadsheetController@export')->name('export');
-Route::get('planilha', 'SpreadsheetController@importExportView');
+Route::get('planilha', 'SpreadsheetController@importExportView')->middleware('checkuser');
 Route::post('import', 'SpreadsheetController@import')->name('import');
 
 //rotas de usuários (/login e /register são do pacote ui)
@@ -61,3 +58,6 @@ Route::group(['prefix'=>'produtos'], function(){
     Route::get('/cadastrar', 'ProductController@createProduct')->middleware('checkadminmanager');
     Route::post('/cadastrar', 'ProductController@createProduct');
 });
+
+//usuário logado que não tem nível de acesso para a rota
+Route::get('/stop', 'HomeController@stop')->name('stop');

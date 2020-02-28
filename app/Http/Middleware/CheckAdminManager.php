@@ -18,7 +18,7 @@ class CheckAdminManager
     {
         $user = Auth::user();
 
-        if($user && $user->access_level_id == 1 || $user->access_level_id == 2){
+        if($user && $user->access_level_id != 3){
             return $next($request);
         } else {
             return redirect('/login');
