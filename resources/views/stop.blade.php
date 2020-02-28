@@ -14,7 +14,10 @@
                         </div>
                     @endif
 
-                    Você não está logado ou seu usuário não possui nível de acesso!
+                    Seu usuário não possui nível de acesso!
+                </div>
+                <div>
+                    <a class="btn btn-primary m-3" href="/">Voltar</a>
                 </div>
             </div>
         </div>

@@ -21,7 +21,7 @@ class CheckAdminManager
         if($user && $user->access_level_id != 3){
             return $next($request);
         } else {
-            return redirect('/login');
+            return redirect('/stop');
         }
     }
 }
