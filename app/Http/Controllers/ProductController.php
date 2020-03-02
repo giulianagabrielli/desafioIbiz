@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use Gate;
 
 class ProductController extends Controller
 {
+
+    //
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     //visualização de produtos ativos 
     public function getActiveProducts(){
         
@@ -17,22 +24,28 @@ class ProductController extends Controller
     //visualização de produtos inativos 
     public function getInactiveProducts(){
         
-        $products = Product::where('status_id', '=', 2)->get();
-        return view('Product.inactiveProducts', ["products"=>$products]);
+        if(Gate::denies('admin-manager-roles')){
+            return redirect('/produtos/ativos');
+        } else {
+            $products = Product::where('status_id', '=', 2)->get();
+            return view('Product.inactiveProducts', ["products"=>$products]);
+        }
+
     }
 
-    //edição de produtos
+    //edição de produtos por admin e gerente
     public function updateProduct(Request $request, $id=0){
             
         if($request->isMethod('GET')){
-           
-            $product = Product::find($id);
-            
-            if($product){
-                return view('Product.updateProduct', ["product"=>$product]);
+
+            if(Gate::denies('admin-manager-roles')){
+                return redirect("/produtos/ativos");
             } else {
-                return view('Product.updateProduct');
+
+                $product = Product::find($id);
+                return view('Product.updateProduct', ["product"=>$product]);
             }
+           
         } else {
             
             //alterando dados na tabela Products:
@@ -51,21 +64,29 @@ class ProductController extends Controller
         }
     }
 
-    //deleção de produtos
+    //deleção de produtos por admin
     public function deleteProduct(Request $request, $id=0){
-        $result = Product::destroy($id);
-        if($result){
+
+        if(Gate::denies('admin-role')){
+            return redirect('/produtos/ativos'); 
+
+        } else {
+            $result = Product::destroy($id);
             return redirect('/produtos/ativos'); 
         }
     } 
 
-    //cadastro de novos produtos
+    //cadastro de novos produtos admin e gerente
     public function createProduct(Request $request){
 
         if($request->isMethod('GET')){
-            
-            return view('Product.registerProduct');
 
+            if(Gate::denies('admin-manager-roles')){
+                return redirect('/produtos/ativos'); 
+            } else {
+                return view('Product.registerProduct');
+            }
+            
         } else {
 
             //criando novo produto em Products:

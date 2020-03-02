@@ -19,8 +19,6 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('cpf')->unique();
-            $table->unsignedBigInteger('access_level_id');
-            $table->foreign('access_level_id')->references('id')->on('access_levels');
             $table->unsignedBigInteger('status_id');
             $table->foreign('status_id')->references('id')->on('status');
             $table->rememberToken();

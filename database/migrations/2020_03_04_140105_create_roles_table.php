@@ -3,10 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Access_level;
 
-
-class CreateAccessLevelsTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,16 +13,11 @@ class CreateAccessLevelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('access_levels', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('access_level');
+            $table->string('name');
+            $table->timestamps();
         });
-
-        Access_level::insert([
-            ['access_level' => 'administrador'],
-            ['access_level' => 'gerente'],
-            ['access_level' => 'consultor']
-        ]);
     }
 
     /**
@@ -34,6 +27,6 @@ class CreateAccessLevelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('access_levels');
+        Schema::dropIfExists('roles');
     }
 }

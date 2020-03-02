@@ -90,25 +90,6 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="access_level_id" class="col-md-4 col-form-label text-md-right">{{ __('Nível de acesso') }}</label>
-
-                            <div class="col-md-6">
-                                <select class="form-control @error('access_level_id') is-invalid @enderror" name="access_level_id" id="access_level_id">
-                                    <option value="{{ old('access_level_id') }}" selected>Selecione o nível de acesso do usuário</option>
-                                    <option value=1>1 - Administrador</option>
-                                    <option value=2>2 - Gerente</option>
-                                    <option value=3>3 - Consultor</option>
-                                </select>
-
-                                @error('access_level_id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
                             <label for="access_level" class="col-md-4 col-form-label text-md-right">{{ __('Status') }}</label>
 
                             <div class="col-md-6">

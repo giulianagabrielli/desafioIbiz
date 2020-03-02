@@ -5,18 +5,19 @@
 <section class="container">
     <div class="row">
 
+        @can('admin-role')
         <div class="col-md-12 mb-4">
-            <a href="/usuarios/cadastrar" class="btn btn-success btn-lg">Cadastrar Usuários</a>
-            <small id="" class="form-text text-muted">Acesso restrito a administradores</small>
+            <a href="/usuarios/cadastrar" class="btn btn-success btn-lg">Cadastrar Novos Usuários</a>
         </div>
+        @endcan
 
         <div class="col-md-12 mb-4">
             <h3>Lista de usuários:</h3>
             
             <a href="/usuarios/ativos" class="btn btn-primary">Ativos</a>
+            @can('admin-role')
             <a href="/usuarios/inativos" class="btn btn-outline-secondary">Inativos</a>
-            <a href="/usuarios/admin/ativos" class="btn btn-outline-secondary">Usuários ativos por nível de acesso</a>
-            <a href="/usuarios/admin/inativos" class="btn btn-outline-secondary">Usuários inativos por nível de acesso</a>
+            @endcan
         </div>
 
 
@@ -40,12 +41,15 @@
                         <th scope="row"> {{$user->id}} </th>
                         <td> {{$user->name}} </td>
                         <td> {{ $user->email }} </td>
-                        <td> {{ $user->access_level }} </td>
+                        <td> {{ implode(', ', $user->roles()->get()->pluck('name')->toArray()) }} </td>
                         <td> {{ $user->created_at }} </td>
                         <td> {{ $user->updated_at }} </td>
                         <td>
+
+                        @can('admin-role')
                             <a class="btn btn-success" href="/usuarios/atualizar/{{$user->id}}">Atualizar</a>
                             <a class="btn btn-danger" href="/usuarios/deletar/{{$user->id}}">Deletar</a>
+                        @endcan
                         </td>
                     </tr>
                 @empty

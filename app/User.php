@@ -19,8 +19,7 @@ class User extends Authenticatable
         'name', 
         'email', 
         'password', 
-        'cpf',
-        'access_level_id', 
+        'cpf', 
         'status_id'
     ];
 
@@ -33,13 +32,42 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    // Fazendo a associação das tabelas para cruzar dados de users e access_levels.
-    public function access_levels(){
-        return $this->belongsTo('App\Access_level');
+    /**
+     * The attributes that should be cast to native types.
+     * 
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    // Fazendo a associação das tabelas para cruzar dados de users e roles.
+    public function roles(){
+        return $this->belongsToMany('App\Role');
     }
 
     // Fazendo a associação das tabelas para cruzar dados de users e status.
     public function status(){
         return $this->belongsTo('App\Status');
+    }
+
+    //se tem algum dos roles
+    public function hasAnyRoles($roles){
+
+        if($this->roles()->whereIn('name', $roles)->first()){
+            return true;
+        }
+
+        return false;
+    }
+
+    //se tem um dos roles
+    public function hasRole($role){
+
+        if($this->roles()->where('name', $role)->first()){
+            return true;
+        }
+
+        return false;
     }
 }

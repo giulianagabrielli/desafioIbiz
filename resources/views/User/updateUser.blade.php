@@ -28,15 +28,14 @@
                         <input name="password" type="password" class="form-control" id="password" value="{{ $user->password }}">
                     </div>
 
-                    <div class="form-group">
-                        <label for="access_level_id">Nível de Acesso</label>
-                        <select class="form-control" name="access_level_id">
-                        <option selected>{{ $user->access_level_id }}</option>
-                        <option value="1">1 - Administrador</option>
-                        <option value="2">2 - Gerente</option>
-                        <option value="3">3 - Consultor</option>
-                        </select>
-                    </div>
+                    <label>Nível de Acesso</label>
+                        @foreach($roles as $role)
+                        <div class="form-check">
+                            <input type="checkbox" name="roles[]" value="{{ $role->id }}"
+                            @if($user->roles->pluck('id')->contains($role->id)) checked @endif>
+                            <label>{{ $role->name }}</label>
+                        </div>
+                        @endforeach
 
                     <div class="form-group">
                         <label for="status_id">Status</label>
